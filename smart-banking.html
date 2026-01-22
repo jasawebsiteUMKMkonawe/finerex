@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Smart Banking Ecosystem - UIXSHUVO</title>
+    <meta name="description" content="Integrate your savings, checking, and digital wallet in one dashboard. Experience the future of connected finance with UIXSHUVO Smart Banking.">
+    <meta name="keywords" content="smart banking, integrated finance, digital wallet dashboard, checking savings app, financial ecosystem">
+    <meta name="author" content="UIXSHUVO Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/service-smart-banking.html">
+
+    <meta property="og:title" content="Smart Banking Ecosystem - All in One Dashboard">
+    <meta property="og:description" content="Manage all your accounts in one place. Real-time insights, zero friction.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:type" content="website">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="theme-color" content="#BAFF39">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Smart Banking",
+      "provider": {
+        "@type": "Organization",
+        "name": "UIXSHUVO"
+      },
+      "areaServed": "Global",
+      "description": "Integrate savings, checking, and digital wallets into a single, intuitive dashboard."
+    }
+    </script>
+
+    <style>
+        /* =========================================
+           1. CORE STYLES
+           ========================================= */
+        :root {
+            --brand-blue: #85DBFA;
+            --brand-lime: #BAFF39;
+            --brand-dark: #0F172A;
+            --brand-text: #334155;
+            --brand-bg: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --card-hover: 0 20px 40px -5px rgba(186, 255, 57, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-bg);
+            color: var(--brand-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar { padding: 1rem 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.03); position: sticky; top: 0; z-index: 1000; }
+        .navbar-brand { font-weight: 800; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .nav-link { font-weight: 600; color: #64748B !important; margin: 0 12px; transition: 0.3s; font-size: 0.95rem; }
+        .nav-link:hover, .nav-link.active { color: var(--brand-dark) !important; }
+        .btn-navbar-cta { background-color: var(--brand-dark); color: #fff; font-weight: 700; border-radius: 50px; padding: 10px 30px; border: none; transition: 0.3s; text-decoration: none; }
+        .btn-navbar-cta:hover { background-color: var(--brand-lime); color: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(186, 255, 57, 0.4); }
+
+        /* Floating Buttons */
+        .floating-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .btn-whatsapp { width: 60px; height: 60px; background-color: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: 0.3s; text-decoration: none; position: relative; }
+        .btn-whatsapp:hover { transform: scale(1.1); color: white; }
+        .btn-whatsapp::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #25D366; animation: pulse-ring 2s infinite; z-index: -1; }
+        @keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+        .btn-scroll-top { width: 50px; height: 50px; background-color: var(--brand-dark); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px); align-self: center; }
+        .btn-scroll-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .btn-scroll-top:hover { background-color: var(--brand-lime); color: var(--brand-dark); transform: translateY(-5px); }
+
+        /* =========================================
+           2. SERVICE DETAIL SPECIFIC STYLES
+           ========================================= */
+        .section-padding { padding: 5rem 0; }
+        .section-label { color: var(--brand-dark); font-weight: 700; letter-spacing: 1px; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.8rem; display: inline-block; background: var(--brand-lime); padding: 4px 12px; border-radius: 4px; }
+
+        /* Hero */
+        .detail-hero { padding: 6rem 0 4rem; text-align: center; background: radial-gradient(circle at center, rgba(186, 255, 57, 0.1) 0%, transparent 70%); }
+        .hero-title { font-weight: 800; font-size: 3.5rem; letter-spacing: -1px; margin-bottom: 1rem; color: var(--brand-dark); }
+        .hero-desc { font-size: 1.2rem; color: #64748B; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+        /* Dashboard Preview */
+        .dashboard-preview { position: relative; margin-top: -3rem; z-index: 2; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .dashboard-img { width: 100%; height: auto; display: block; }
+
+        /* Features List */
+        .feature-box { padding: 2rem; background: white; border-radius: 20px; border: 1px solid #eee; transition: 0.3s; height: 100%; }
+        .feature-box:hover { transform: translateY(-5px); box-shadow: var(--card-shadow); border-color: var(--brand-lime); }
+        .feature-icon { width: 60px; height: 60px; background: #F8FAFC; color: var(--brand-dark); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; transition: 0.3s; }
+        .feature-box:hover .feature-icon { background: var(--brand-lime); }
+
+        /* How It Works Steps */
+        .step-card { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 2rem; }
+        .step-number { width: 40px; height: 40px; background: var(--brand-dark); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+        .step-content h5 { font-weight: 700; margin-bottom: 0.5rem; }
+
+        /* FAQ */
+        .faq-section { background: #F8FAFC; border-radius: 24px; padding: 3rem; }
+        .accordion-button:not(.collapsed) { background-color: #f0fdf4; color: var(--brand-dark); border-color: var(--brand-lime); }
+        .accordion-button:focus { box-shadow: none; border-color: rgba(0,0,0,0.1); }
+
+        /* Footer CTA */
+        .cta-section-new { background: radial-gradient(circle at top right, #1E293B, #0F172A); padding: 6rem 0; position: relative; overflow: hidden; color: white; margin-top: 4rem; }
+        .cta-pattern { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4; }
+        .btn-footer-lime { background-color: var(--brand-lime); color: var(--brand-dark); font-weight: 700; padding: 14px 40px; border-radius: 50px; border: none; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .btn-footer-lime:hover { box-shadow: 0 0 20px rgba(186, 255, 57, 0.6); transform: scale(1.05); }
+        footer { padding-top: 4rem; background: #fff; }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div style="width:32px; height:32px; background:var(--brand-dark); border-radius:8px; display:flex; align-items:center; justify-content:center; color:white;">
+                    <i class="bi bi-wallet2" style="font-size: 16px;"></i>
+                </div>
+                UIXSHUVO
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active text-dark" href="service.html">Layanan</a></li> <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="https://wa.me/62895639068080" target="_blank" class="btn-navbar-cta">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="floating-container">
+        <div class="btn-scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+            <i class="bi bi-arrow-up"></i>
+        </div>
+        <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20tertarik%20dengan%20Smart%20Banking." class="btn-whatsapp" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+
+    <section class="detail-hero">
+        <div class="container" data-aos="fade-up">
+            <a href="service.html" class="text-decoration-none fw-bold text-muted small mb-3 d-inline-block"><i class="bi bi-arrow-left"></i> Back to Services</a>
+            <h1 class="hero-title">Smart Banking Ecosystem</h1>
+            <p class="hero-desc">Stop switching between apps. Integrate your savings, checking, and digital wallet in one powerful dashboard. Manage your financial life with clarity.</p>
+        </div>
+    </section>
+
+    <section class="pb-5">
+        <div class="container" data-aos="zoom-in" data-aos-delay="100">
+            <div class="dashboard-preview">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80" alt="Smart Banking Dashboard" class="dashboard-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-label">Features</span>
+                <h2 class="fw-bold">Why switch to Smart Banking?</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="bi bi-layers"></i></div>
+                        <h5 class="fw-bold">All-in-One View</h5>
+                        <p class="text-muted small">See your total net worth. We aggregate data from your checking, savings, and external wallets.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="bi bi-lightning-charge"></i></div>
+                        <h5 class="fw-bold">Instant Transfers</h5>
+                        <p class="text-muted small">Move money between your savings and checking accounts instantly with zero delay.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="bi bi-pie-chart"></i></div>
+                        <h5 class="fw-bold">Smart Analytics</h5>
+                        <p class="text-muted small">AI-powered categorization helps you understand where every cent of your money goes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+                        <h5 class="fw-bold">Unified Security</h5>
+                        <p class="text-muted small">One login, bank-grade encryption. Freeze any card instantly from the dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background-color: var(--bg-soft);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 shadow" alt="Mobile App Usage">
+                </div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                    <span class="section-label">How It Works</span>
+                    <h2 class="fw-bold mb-4">Get started in minutes.</h2>
+                    
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Create your UIXSHUVO ID</h5>
+                            <p class="text-muted small">Sign up with your email and verify your identity. It takes less than 3 minutes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Link your accounts</h5>
+                            <p class="text-muted small">Securely connect your existing bank accounts or deposit funds to start fresh.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Activate Smart Dashboard</h5>
+                            <p class="text-muted small">Your ecosystem is ready. Track, spend, and save from one central hub.</p>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20membuka%20akun%20Smart%20Banking" class="btn btn-dark rounded-pill px-4 mt-3" target="_blank">Open Account Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold text-center mb-4">Frequently Asked Questions</h3>
+                    <div class="faq-section">
+                        <div class="accordion" id="accordionSmartBanking">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                                        Is there a monthly fee for the Smart Ecosystem?
+                                    </button>
+                                </h2>
+                                <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#accordionSmartBanking">
+                                    <div class="accordion-body">No, the basic Smart Banking Ecosystem is free. We only charge for premium features like the metal card or international transfers.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                                        Can I link external bank accounts?
+                                    </button>
+                                </h2>
+                                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#accordionSmartBanking">
+                                    <div class="accordion-body">Yes! You can link accounts from other banks via Open Banking API to view your complete financial picture in one place.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+                                        Is my digital wallet insured?
+                                    </button>
+                                </h2>
+                                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#accordionSmartBanking">
+                                    <div class="accordion-body">Funds held in the Checking and Savings accounts are FDIC insured up to $250,000. Crypto assets in the digital wallet are secured but not FDIC insured.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section-new text-center">
+        <div class="cta-pattern"></div>
+        <div class="container position-relative z-2" data-aos="zoom-in">
+            <h2 class="fw-bold display-5 mb-3">Ready to simplify your finance?</h2>
+            <p class="text-white-50 mb-4 fs-5">Join the ecosystem today and take control.</p>
+            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20tertarik%20dengan%20Smart%20Banking%20Ecosystem" class="btn-footer-lime shadow" target="_blank">Get Started on WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">UIXSHUVO</h5>
+                    <p class="text-muted small w-75">The financial platform that helps you manage money, build credit, and split expenses effortlessly.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="about.html">About Us</a></li>
+                        <li class="mb-2"><a href="#">Careers</a></li>
+                        <li class="mb-2"><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#">Help Center</a></li>
+                        <li class="mb-2"><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Get the App</h6>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">App Store</button>
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">Google Play</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 pb-4 text-center text-muted small">
+                &copy; 2026 UIXSHUVO Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 100, duration: 800 });
+
+        // Scroll to Top Logic
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        };
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>

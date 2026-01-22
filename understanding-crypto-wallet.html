@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Understanding Crypto Wallets: A Beginner's Guide - UIXSHUVO</title>
+    <meta name="description" content="Hot wallet vs Cold wallet? Custodial vs Non-custodial? We break down everything you need to know about securing your digital assets in this complete guide.">
+    <meta name="keywords" content="crypto wallet guide, hot wallet vs cold wallet, custodial vs non-custodial, crypto security, blockchain basics, hardware wallet, metamask guide">
+    <meta name="author" content="Arefin Shuvo">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/blog-crypto-wallets.html">
+
+    <meta property="og:title" content="Understanding Crypto Wallets: A Beginner's Guide">
+    <meta property="og:description" content="Secure your crypto assets. Learn the difference between Hot vs Cold wallets and how to keep your keys safe.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:type" content="article">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="theme-color" content="#BAFF39">
+
+    <style>
+        /* =========================================
+           1. CORE STYLES (KONSISTEN)
+           ========================================= */
+        :root {
+            --brand-blue: #85DBFA;
+            --brand-lime: #BAFF39;
+            --brand-dark: #0F172A;
+            --brand-text: #334155;
+            --brand-bg: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --card-hover: 0 20px 40px -5px rgba(186, 255, 57, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-bg);
+            color: var(--brand-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar { padding: 1rem 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.03); position: sticky; top: 0; z-index: 1000; }
+        .navbar-brand { font-weight: 800; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .nav-link { font-weight: 600; color: #64748B !important; margin: 0 12px; transition: 0.3s; font-size: 0.95rem; }
+        .nav-link:hover, .nav-link.active { color: var(--brand-dark) !important; }
+        .btn-navbar-cta { background-color: var(--brand-dark); color: #fff; font-weight: 700; border-radius: 50px; padding: 10px 30px; border: none; transition: 0.3s; text-decoration: none; }
+        .btn-navbar-cta:hover { background-color: var(--brand-lime); color: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(186, 255, 57, 0.4); }
+
+        /* Floating Buttons */
+        .floating-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .btn-whatsapp { width: 60px; height: 60px; background-color: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: 0.3s; text-decoration: none; position: relative; }
+        .btn-whatsapp:hover { transform: scale(1.1); color: white; }
+        .btn-whatsapp::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #25D366; animation: pulse-ring 2s infinite; z-index: -1; }
+        @keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+        .btn-scroll-top { width: 50px; height: 50px; background-color: var(--brand-dark); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px); align-self: center; }
+        .btn-scroll-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .btn-scroll-top:hover { background-color: var(--brand-lime); color: var(--brand-dark); transform: translateY(-5px); }
+
+        /* =========================================
+           2. BLOG DETAIL STYLES
+           ========================================= */
+        .blog-header { padding: 4rem 0 2rem; text-align: center; }
+        .blog-category { background: var(--brand-lime); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--brand-dark); display: inline-block; margin-bottom: 1rem; }
+        .blog-title { font-weight: 800; font-size: 3rem; line-height: 1.2; margin-bottom: 1rem; color: var(--brand-dark); }
+        .blog-meta { color: #64748B; font-size: 0.95rem; }
+        .blog-meta a { color: var(--brand-dark); text-decoration: none; font-weight: 600; }
+
+        .main-img-wrapper { border-radius: 24px; overflow: hidden; margin-bottom: 3rem; position: relative; }
+        .main-img { width: 100%; height: auto; display: block; }
+        .img-caption { text-align: center; color: #64748B; font-size: 0.85rem; margin-top: 10px; font-style: italic; }
+
+        /* Article Content Typography */
+        .article-content { font-size: 1.15rem; line-height: 1.8; color: var(--brand-text); }
+        .article-content h2 { font-weight: 800; font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--brand-dark); }
+        .article-content h3 { font-weight: 700; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: var(--brand-dark); }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content img { border-radius: 16px; margin: 2rem 0; width: 100%; height: auto; }
+
+        /* Table of Contents (TOC) */
+        .toc-box { background: #F8FAFC; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; }
+        .toc-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .toc-title { font-weight: 700; margin: 0; font-size: 1.1rem; }
+        .toc-list { list-style: none; padding: 0; margin: 1rem 0 0 0; display: none; }
+        .toc-list.show { display: block; animation: fadeIn 0.3s ease; }
+        .toc-list li { margin-bottom: 8px; }
+        .toc-list li a { text-decoration: none; color: var(--brand-text); font-size: 0.95rem; transition: 0.2s; }
+        .toc-list li a:hover { color: var(--brand-blue); padding-left: 5px; }
+        .toc-h3 { margin-left: 20px; font-size: 0.9rem; border-left: 2px solid #e2e8f0; padding-left: 10px; }
+
+        /* Components */
+        blockquote { border-left: 5px solid var(--brand-lime); padding-left: 20px; margin: 2rem 0; font-style: italic; font-size: 1.3rem; color: var(--brand-dark); background: #f0fdf4; padding: 20px; border-radius: 0 10px 10px 0; }
+        
+        .read-also { background: white; border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 5px solid var(--brand-blue); display: flex; align-items: center; gap: 15px; transition: 0.3s; }
+        .read-also:hover { transform: translateX(5px); box-shadow: var(--card-shadow); }
+        .read-also-label { font-weight: 700; text-transform: uppercase; font-size: 0.8rem; color: var(--brand-blue); flex-shrink: 0; }
+        .read-also-link { font-weight: 600; color: var(--brand-dark); text-decoration: none; font-size: 1.05rem; }
+        .read-also-link:hover { text-decoration: underline; }
+
+        .promo-gif-container { margin: 3rem 0; text-align: center; border-radius: 20px; overflow: hidden; }
+        .promo-gif { width: 100%; max-width: 100%; height: auto; border-radius: 20px; }
+
+        /* FAQ */
+        .faq-section { margin-top: 3rem; background: #fff; padding: 2rem; border-radius: 20px; border: 1px solid #eee; }
+        .faq-title { font-weight: 700; font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .accordion-button:not(.collapsed) { background-color: #f0fdf4; color: var(--brand-dark); }
+        .accordion-button:focus { box-shadow: none; border-color: rgba(0,0,0,0.1); }
+
+        /* Author & Share */
+        .author-box { background: #F8FAFC; padding: 2rem; border-radius: 20px; display: flex; align-items: center; gap: 20px; margin-top: 4rem; border: 1px solid #eee; }
+        .author-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
+        .share-box { margin-top: 2rem; text-align: center; }
+        .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 5px; transition: 0.3s; color: white; }
+        .share-wa { background: #25D366; } .share-fb { background: #1877F2; } .share-tw { background: #1DA1F2; }
+        .share-btn:hover { transform: translateY(-3px); color: white; opacity: 0.9; }
+
+        /* Related Articles */
+        .related-card { border: none; border-radius: 20px; overflow: hidden; height: 100%; border: 1px solid #eee; transition: 0.3s; }
+        .related-card:hover { transform: translateY(-5px); box-shadow: var(--card-shadow); border-color: var(--brand-lime); }
+        .related-img { height: 200px; width: 100%; object-fit: cover; }
+        .related-body { padding: 1.5rem; }
+        .related-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.4; }
+        .related-title a { text-decoration: none; color: var(--brand-dark); }
+        .btn-read-more { color: var(--brand-dark); font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+        .btn-read-more:hover { color: var(--brand-blue); }
+
+        /* Footer */
+        .cta-section-new { background: radial-gradient(circle at top right, #1E293B, #0F172A); padding: 6rem 0; position: relative; overflow: hidden; color: white; margin-top: 4rem; }
+        .cta-pattern { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4; }
+        .btn-footer-lime { background-color: var(--brand-lime); color: var(--brand-dark); font-weight: 700; padding: 14px 40px; border-radius: 50px; border: none; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .btn-footer-lime:hover { box-shadow: 0 0 20px rgba(186, 255, 57, 0.6); transform: scale(1.05); }
+        footer { padding-top: 4rem; background: #fff; }
+
+        @media (max-width: 768px) {
+            .blog-title { font-size: 2rem; }
+            .author-box { flex-direction: column; text-align: center; }
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div style="width:32px; height:32px; background:var(--brand-dark); border-radius:8px; display:flex; align-items:center; justify-content:center; color:white;">
+                    <i class="bi bi-wallet2" style="font-size: 16px;"></i>
+                </div>
+                UIXSHUVO
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link active text-dark" href="blog.html">Blog</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="https://wa.me/62895639068080" target="_blank" class="btn-navbar-cta">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="floating-container">
+        <div class="btn-scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+            <i class="bi bi-arrow-up"></i>
+        </div>
+        <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20tertarik%20dengan%20artikel%20Crypto%20Wallets." class="btn-whatsapp" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+
+    <article>
+        <header class="blog-header container" data-aos="fade-up">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <span class="blog-category">Crypto & Security</span>
+                    <h1 class="blog-title">Understanding Crypto Wallets: A Beginner's Guide</h1>
+                    <div class="blog-meta mt-3">
+                        <span>By <a href="#">Arefin Shuvo</a></span> • <span>Oct 10, 2025</span> • <span>6 min read</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container" data-aos="zoom-in">
+            <div class="main-img-wrapper">
+                <img src="img/finance.png" alt="Crypto Wallets Concept" class="main-img">
+                <div class="img-caption">Your keys, your crypto. Understanding how to secure digital assets is crucial.</div>
+            </div>
+        </div>
+
+        <div class="container section-padding pt-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 article-content">
+                    
+                    <div class="toc-box" id="toc-container">
+                        <div class="toc-header" onclick="toggleToc()">
+                            <span class="toc-title">Table of Contents</span>
+                            <i class="bi bi-chevron-down" id="toc-icon"></i>
+                        </div>
+                        <ul class="toc-list" id="toc-list">
+                            </ul>
+                    </div>
+
+                    <p>Entering the world of cryptocurrency can be overwhelming. You hear terms like "private keys," "cold storage," and "seed phrases." But at its core, a crypto wallet is simply a tool that interacts with the blockchain to let you send, receive, and monitor your digital assets.</p>
+                    
+                    <p>Unlike a physical wallet that holds cash, a crypto wallet doesn't actually store your coins. Instead, it stores the <strong>keys</strong> (passwords) that prove your ownership of the coins on the blockchain.</p>
+
+                    <h2>1. Hot Wallets vs. Cold Wallets</h2>
+                    <p>The first distinction you need to understand is the connection to the internet.</p>
+
+                    <h3>Hot Wallets (Online)</h3>
+                    <p>Hot wallets are connected to the internet. Examples include mobile apps (like MetaMask, Trust Wallet) and exchange wallets (Binance, Coinbase).</p>
+                    <ul>
+                        <li><strong>Pros:</strong> Convenient for daily trading and quick transactions. Free to use.</li>
+                        <li><strong>Cons:</strong> More vulnerable to hacks and phishing attacks because they are always online.</li>
+                    </ul>
+
+                    <h3>Cold Wallets (Offline)</h3>
+                    <p>Cold wallets are physical devices (hardware wallets like Ledger or Trezor) that keep your keys offline.</p>
+                    <ul>
+                        <li><strong>Pros:</strong> Extremely secure. Immune to online hacking attempts.</li>
+                        <li><strong>Cons:</strong> Less convenient for frequent trading. Devices cost money ($50-$150).</li>
+                    </ul>
+
+                    <div class="read-also">
+                        <div class="read-also-label">Baca Juga:</div>
+                        <a href="blog-saving-tips.html" class="read-also-link">The Future of Digital Banking in 2026</a>
+                    </div>
+
+                    <h2>2. Custodial vs. Non-Custodial</h2>
+                    <p>This distinction is about <strong>control</strong>. Who holds the keys?</p>
+                    <p><strong>Custodial Wallets:</strong> A third party (like an exchange) holds your private keys. It's like a bank; they secure your funds, but you have to trust them.</p>
+                    <p><strong>Non-Custodial Wallets:</strong> You hold your own private keys. You are your own bank.</p>
+
+                    <blockquote>
+                        "Not your keys, not your coins. If you don't control the private key, you don't truly own the asset."
+                    </blockquote>
+
+                    <div class="promo-gif-container">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjItXy-9mOkvyb_t7qETw7rGTpMfhzq1lR6tPmRK8fonU23BJNl5zPAjT59CkFEu9C-rtgcnXUEpSKrO9Z2otQjajAAU9f9QNi_eWzH9cqnrnqHf2Iofe33TznbXp_0-FzkpuHwzMSagd5Tn5R7flVOMnPf84_xFBEf46fsb1zsZqVRqwQazYH7RhOaEpg6/s640/banner-baru.gif" alt="Blockchain Tech" class="promo-gif">
+                        <div class="img-caption">Blockchain technology ensures transparency and security.</div>
+                    </div>
+
+                    <h2>3. How to Secure Your Wallet</h2>
+                    <p>Security is paramount. Here are the golden rules for keeping your crypto safe:</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1639815188546-c43c240ff4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hardware Wallet" class="img-fluid rounded-3 mb-3">
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>Never share your Seed Phrase:</strong> This is the master key to your wallet.</li>
+                                <li><strong>Use a Hardware Wallet:</strong> For long-term storage of significant amounts.</li>
+                                <li><strong>Enable 2FA:</strong> Use Google Authenticator, not SMS, for exchange accounts.</li>
+                                <li><strong>Beware of Phishing:</strong> Always double-check URLs before connecting your wallet.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="read-also">
+                        <div class="read-also-label">Baca Juga:</div>
+                        <a href="#" class="read-also-link">Safe Online Shopping: Protecting Your Data</a>
+                    </div>
+
+                    <div class="faq-section">
+                        <h4 class="faq-title">Frequently Asked Questions</h4>
+                        <div class="accordion" id="accordionBlog">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        What happens if I lose my hardware wallet?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordionBlog">
+                                    <div class="accordion-body">As long as you have your recovery seed phrase (the 12-24 words), you can restore your funds on a new device. The device itself is just a key, not the vault.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Is MetaMask free to use?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionBlog">
+                                    <div class="accordion-body">Yes, MetaMask is free to download and use. However, you still have to pay "gas fees" (network transaction fees) when you move crypto on the blockchain.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Conclusion</h2>
+                    <p>Understanding crypto wallets is the first step towards financial sovereignty in the digital age. Whether you choose the convenience of a hot wallet or the security of a cold wallet, always prioritize the safety of your private keys.</p>
+
+                    
+
+                    <div class="share-box">
+                        <p class="fw-bold mb-3">Share this article:</p>
+                        <a href="https://wa.me/?text=Check out this guide on Crypto Wallets!" class="share-btn share-wa" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+                        <a href="#" class="share-btn share-fb"><i class="bi bi-facebook"></i> Facebook</a>
+                        <a href="#" class="share-btn share-tw"><i class="bi bi-twitter"></i> Twitter</a>
+                    </div>
+
+                    <div class="author-box">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Author" class="author-img">
+                        <div>
+                            <h5 class="fw-bold mb-1">Arefin Shuvo</h5>
+                            <small class="text-muted d-block mb-2">Founder & CEO of UIXSHUVO</small>
+                            <p class="mb-0 small text-secondary">A fintech enthusiast with over 10 years of experience in digital banking and product design. Passionate about financial literacy.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section class="section-padding" style="background-color: var(--bg-soft);">
+        <div class="container">
+            <h3 class="fw-bold mb-4 text-center">Related Articles</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="related-card bg-white">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="related-img">
+                        <div class="related-body">
+                            <h5 class="related-title"><a href="#">The Future of Digital Banking</a></h5>
+                            <p class="text-muted small mb-3">How AI and blockchain are reshaping finance.</p>
+                            <a href="#" class="btn-read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="related-card bg-white">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560eb3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="related-img">
+                        <div class="related-body">
+                            <h5 class="related-title"><a href="blog-saving-tips.html">5 Simple Habits to Save More</a></h5>
+                            <p class="text-muted small mb-3">Practical tips to cut expenses easily.</p>
+                            <a href="blog-saving-tips.html" class="btn-read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="related-card bg-white">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="related-img">
+                        <div class="related-body">
+                            <h5 class="related-title"><a href="#">Safe Online Shopping</a></h5>
+                            <p class="text-muted small mb-3">Protecting your data while transacting online.</p>
+                            <a href="#" class="btn-read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section-new text-center">
+        <div class="cta-pattern"></div>
+        <div class="container position-relative z-2" data-aos="zoom-in">
+            <h2 class="fw-bold display-5 mb-3">Ready to start?</h2>
+            <p class="text-white-50 mb-4 fs-5">Join 2 million users mastering their money today.</p>
+            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20tertarik%20download%20aplikasi" class="btn-footer-lime shadow" target="_blank">Download App</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">UIXSHUVO</h5>
+                    <p class="text-muted small w-75">The financial platform that helps you manage money, build credit, and split expenses effortlessly.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#">About Us</a></li>
+                        <li class="mb-2"><a href="#">Careers</a></li>
+                        <li class="mb-2"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#">Help Center</a></li>
+                        <li class="mb-2"><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Get the App</h6>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">App Store</button>
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">Google Play</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 pb-4 text-center text-muted small">
+                &copy; 2026 UIXSHUVO Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 100, duration: 800 });
+
+        // Scroll to Top Logic
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        };
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- AUTO TABLE OF CONTENTS (TOC) LOGIC ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocList = document.getElementById('toc-list');
+            const content = document.querySelector('.article-content');
+            const headers = content.querySelectorAll('h2, h3');
+
+            if (headers.length > 0) {
+                headers.forEach((header, index) => {
+                    if (!header.id) {
+                        header.id = 'toc-header-' + index;
+                    }
+
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = '#' + header.id;
+                    a.textContent = header.textContent;
+
+                    if (header.tagName.toLowerCase() === 'h3') {
+                        li.classList.add('toc-h3');
+                    }
+
+                    li.appendChild(a);
+                    tocList.appendChild(li);
+                });
+            } else {
+                document.getElementById('toc-container').style.display = 'none';
+            }
+        });
+
+        function toggleToc() {
+            const list = document.getElementById('toc-list');
+            const icon = document.getElementById('toc-icon');
+            if (list.classList.contains('show')) {
+                list.classList.remove('show');
+                icon.classList.remove('bi-chevron-up');
+                icon.classList.add('bi-chevron-down');
+            } else {
+                list.classList.add('show');
+                icon.classList.remove('bi-chevron-down');
+                icon.classList.add('bi-chevron-up');
+            }
+        }
+    </script>
+</body>
+
+</html>
