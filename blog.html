@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Blog & Insights - UIXSHUVO Finance</title>
+    <meta name="description"
+        content="Read the latest financial tips, crypto news, and banking trends on UIXSHUVO Blog. Stay ahead of the curve.">
+    <meta name="keywords" content="finance blog, crypto news, banking tips, financial literacy, investment guide">
+    <meta name="author" content="UIXSHUVO Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/blog.html">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="theme-color" content="#BAFF39">
+
+    <style>
+        /* =========================================
+           1. CORE STYLES
+           ========================================= */
+        :root {
+            --brand-blue: #85DBFA;
+            --brand-lime: #BAFF39;
+            --brand-dark: #0F172A;
+            --brand-text: #334155;
+            --brand-bg: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --card-hover: 0 20px 40px -5px rgba(186, 255, 57, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-bg);
+            color: var(--brand-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #64748B !important;
+            margin: 0 12px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--brand-dark) !important;
+        }
+
+        .btn-navbar-cta {
+            background-color: var(--brand-dark);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 10px 30px;
+            border: none;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-navbar-cta:hover {
+            background-color: var(--brand-lime);
+            color: var(--brand-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(186, 255, 57, 0.4);
+        }
+
+        /* Floating Buttons */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .btn-whatsapp {
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .btn-whatsapp::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #25D366;
+            animation: pulse-ring 2s infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .btn-scroll-top {
+            width: 50px;
+            height: 50px;
+            background-color: var(--brand-dark);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            align-self: center;
+        }
+
+        .btn-scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .btn-scroll-top:hover {
+            background-color: var(--brand-lime);
+            color: var(--brand-dark);
+            transform: translateY(-5px);
+        }
+
+        /* =========================================
+           2. BLOG PAGE STYLES
+           ========================================= */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .section-label {
+            color: var(--brand-dark);
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            background: var(--brand-lime);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        /* Hero */
+        .blog-hero {
+            padding: 6rem 0 4rem;
+            text-align: center;
+            background: radial-gradient(circle at top left, rgba(186, 255, 57, 0.15) 0%, transparent 60%);
+        }
+
+        .hero-title {
+            font-weight: 800;
+            font-size: 3.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Featured Post */
+        .featured-post-card {
+            border: none;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 4rem;
+            box-shadow: var(--card-shadow);
+            transition: 0.3s;
+        }
+
+        .featured-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover);
+        }
+
+        .featured-img-wrap {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .featured-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-post-card:hover .featured-img {
+            transform: scale(1.03);
+        }
+
+        .featured-content {
+            padding: 3rem;
+            background: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blog-badge {
+            background: var(--brand-lime);
+            color: var(--brand-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* Blog Grid */
+        .blog-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #eee;
+            transition: 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover);
+            border-color: var(--brand-lime);
+        }
+
+        .blog-thumb-wrap {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-thumb {
+            transform: scale(1.05);
+        }
+
+        .blog-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-meta {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .blog-title {
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            transition: 0.2s;
+        }
+
+        .blog-title a {
+            color: var(--brand-dark);
+            text-decoration: none;
+        }
+
+        .blog-title a:hover {
+            color: var(--brand-blue);
+        }
+
+        .blog-excerpt {
+            color: #64748B;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Pagination */
+        .pagination .page-link {
+            color: var(--brand-dark);
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin: 0 5px;
+            font-weight: 600;
+        }
+
+        .pagination .page-link:hover {
+            background-color: #F8FAFC;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--brand-dark);
+            color: white;
+        }
+
+        /* Newsletter & Footer CTA */
+        .newsletter-box {
+            background: #F0Fdf4;
+            border: 1px solid var(--brand-lime);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .cta-section-new {
+            background: radial-gradient(circle at top right, #1E293B, #0F172A);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            margin-top: 4rem;
+        }
+
+        .cta-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.4;
+        }
+
+        .btn-footer-lime {
+            background-color: var(--brand-lime);
+            color: var(--brand-dark);
+            font-weight: 700;
+            padding: 14px 40px;
+            border-radius: 50px;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-footer-lime:hover {
+            box-shadow: 0 0 20px rgba(186, 255, 57, 0.6);
+            transform: scale(1.05);
+        }
+
+        footer {
+            padding-top: 4rem;
+            background: #fff;
+        }
+
+        @media (max-width: 991px) {
+            .featured-img-wrap {
+                height: 250px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div
+                    style="width:32px; height:32px; background:var(--brand-dark); border-radius:8px; display:flex; align-items:center; justify-content:center; color:white;">
+                    <i class="bi bi-wallet2" style="font-size: 16px;"></i>
+                </div>
+                UIXSHUVO
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link active text-dark" href="blog.html">Blog</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="https://wa.me/62895639068080" target="_blank" class="btn-navbar-cta">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="floating-container">
+        <div class="btn-scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+            <i class="bi bi-arrow-up"></i>
+        </div>
+        <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20bertanya%20tentang%20artikel."
+            class="btn-whatsapp" target="_blank" aria-label="Chat WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+
+    <section class="blog-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="section-label">Resources</span>
+            <h1 class="hero-title">Insights & News</h1>
+            <p class="hero-desc">Expert advice on money, investing, and the future of banking. Stay informed.</p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="card featured-post-card" data-aos="zoom-in">
+                <div class="row g-0 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="featured-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                                alt="Featured Post" class="featured-img">
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="featured-content">
+                            <div>
+                                <span class="blog-badge">Featured</span>
+                                <div class="blog-meta mb-2">
+                                    <span><i class="bi bi-calendar3 me-2"></i> Oct 24, 2025</span>
+                                    <span><i class="bi bi-clock me-2"></i> 8 min read</span>
+                                </div>
+                                <h2 class="fw-bold mb-3"><a href="#" class="text-dark text-decoration-none">The Future
+                                        of Digital Banking in 2026 and Beyond</a></h2>
+                                <p class="text-muted mb-4">How AI and blockchain are transforming the way we save,
+                                    spend, and invest money. A deep dive into the trends shaping the industry.</p>
+                                <a href="#" class="btn btn-outline-dark rounded-pill px-4 fw-bold">Read Article</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding pt-0">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-card">
+                        <div class="blog-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560eb3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                                class="blog-thumb" alt="Savings">
+                        </div>
+                        <div class="blog-body">
+                            <span class="text-uppercase fw-bold text-success small mb-2">Financial Tips</span>
+                            <h3 class="blog-title"><a href="#">5 Simple Habits to Save More Money Each Month</a></h3>
+                            <div class="blog-meta">
+                                <span>Oct 12, 2025</span> • <span>5 min read</span>
+                            </div>
+                            <p class="blog-excerpt">Small changes can lead to big savings. Discover practical tips to
+                                cut expenses without sacrificing your lifestyle.</p>
+                            <a href="#" class="text-decoration-none fw-bold text-dark mt-auto">Read More <i
+                                    class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-card">
+                        <div class="blog-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                                class="blog-thumb" alt="Crypto">
+                        </div>
+                        <div class="blog-body">
+                            <span class="text-uppercase fw-bold text-primary small mb-2">Crypto</span>
+                            <h3 class="blog-title"><a href="#">Understanding Crypto Wallets: A Beginner's Guide</a></h3>
+                            <div class="blog-meta">
+                                <span>Oct 10, 2025</span> • <span>6 min read</span>
+                            </div>
+                            <p class="blog-excerpt">Hot wallet vs Cold wallet? Custodial vs Non-custodial? We break down
+                                everything you need to know about securing your assets.</p>
+                            <a href="#" class="text-decoration-none fw-bold text-dark mt-auto">Read More <i
+                                    class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="blog-card">
+                        <div class="blog-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                                class="blog-thumb" alt="Credit">
+                        </div>
+                        <div class="blog-body">
+                            <span class="text-uppercase fw-bold text-info small mb-2">Credit</span>
+                            <h3 class="blog-title"><a href="#">How to Build Your Credit Score from Scratch</a></h3>
+                            <div class="blog-meta">
+                                <span>Oct 05, 2025</span> • <span>4 min read</span>
+                            </div>
+                            <p class="blog-excerpt">No credit history? No problem. Learn the fastest and safest ways to
+                                establish a solid credit score today.</p>
+                            <a href="#" class="text-decoration-none fw-bold text-dark mt-auto">Read More <i
+                                    class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="blog-card">
+                        <div class="blog-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1532619187608-e5375cabadaf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                                class="blog-thumb" alt="Retirement">
+                        </div>
+                        <div class="blog-body">
+                            <span class="text-uppercase fw-bold text-warning small mb-2">Planning</span>
+                            <h3 class="blog-title"><a href="#">Retirement Planning 101: Why Start Early?</a></h3>
+                            <div class="blog-meta">
+                                <span>Sep 28, 2025</span> • <span>7 min read</span>
+                            </div>
+                            <p class="blog-excerpt">Compound interest is the 8th wonder of the world. See how starting
+                                in your 20s makes a massive difference.</p>
+                            <a href="#" class="text-decoration-none fw-bold text-dark mt-auto">Read More <i
+                                    class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="blog-card">
+                        <div class="blog-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                                class="blog-thumb" alt="Business">
+                        </div>
+                        <div class="blog-body">
+                            <span class="text-uppercase fw-bold text-dark small mb-2">Business</span>
+                            <h3 class="blog-title"><a href="#">The Ultimate Tax Guide for Freelancers</a></h3>
+                            <div class="blog-meta">
+                                <span>Sep 20, 2025</span> • <span>10 min read</span>
+                            </div>
+                            <p class="blog-excerpt">Don't let tax season stress you out. A comprehensive guide on
+                                deductions, invoices, and filing taxes as a freelancer.</p>
+                            <a href="#" class="text-decoration-none fw-bold text-dark mt-auto">Read More <i
+                                    class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="blog-card">
+                        <div class="blog-thumb-wrap">
+                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                                class="blog-thumb" alt="Security">
+                        </div>
+                        <div class="blog-body">
+                            <span class="text-uppercase fw-bold text-danger small mb-2">Security</span>
+                            <h3 class="blog-title"><a href="#">Safe Online Shopping: Protecting Your Data</a></h3>
+                            <div class="blog-meta">
+                                <span>Sep 15, 2025</span> • <span>5 min read</span>
+                            </div>
+                            <p class="blog-excerpt">Tips to recognize phishing sites, using virtual cards, and keeping
+                                your financial data secure while shopping online.</p>
+                            <a href="#" class="text-decoration-none fw-bold text-dark mt-auto">Read More <i
+                                    class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5 d-flex justify-content-center" data-aos="fade-up">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1"><i class="bi bi-chevron-left"></i></a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="cta-section-new text-center">
+        <div class="cta-pattern"></div>
+        <div class="container position-relative z-2" data-aos="zoom-in">
+            <h2 class="fw-bold display-5 mb-3">Ready to start?</h2>
+            <p class="text-white-50 mb-4 fs-5">Join 2 million users mastering their money today.</p>
+            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20tertarik%20download%20aplikasi"
+                class="btn-footer-lime shadow" target="_blank">Download App</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">UIXSHUVO</h5>
+                    <p class="text-muted small w-75">The financial platform that helps you manage money, build credit,
+                        and split expenses effortlessly.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Terms</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Get the App</h6>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">App Store</button>
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">Google Play</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 pb-4 text-center text-muted small">
+                &copy; 2026 UIXSHUVO Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 100, duration: 800 });
+
+        // Scroll to Top Logic
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function () {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        };
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>

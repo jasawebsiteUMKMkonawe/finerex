@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Our Services - UIXSHUVO | Banking Solutions</title>
+    <meta name="description" content="Explore UIXSHUVO's financial services: Personal Banking, Business Solutions, Credit Building, and Investment Management.">
+    <meta name="keywords" content="banking services, credit card, business finance, investment app, split bill service">
+    <meta name="author" content="UIXSHUVO Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/service.html">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="theme-color" content="#BAFF39">
+
+    <style>
+        /* =========================================
+           1. SHARED STYLES (KONSISTEN)
+           ========================================= */
+        :root {
+            --brand-blue: #85DBFA;
+            --brand-lime: #BAFF39;
+            --brand-dark: #0F172A;
+            --brand-text: #334155;
+            --brand-bg: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --card-hover: 0 20px 40px -5px rgba(186, 255, 57, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-bg);
+            color: var(--brand-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .navbar-brand { font-weight: 800; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .nav-link { font-weight: 600; color: #64748B !important; margin: 0 12px; transition: 0.3s; font-size: 0.95rem; }
+        .nav-link:hover, .nav-link.active { color: var(--brand-dark) !important; }
+        .btn-navbar-cta { background-color: var(--brand-dark); color: #fff; font-weight: 700; border-radius: 50px; padding: 10px 30px; border: none; transition: 0.3s; text-decoration: none; }
+        .btn-navbar-cta:hover { background-color: var(--brand-lime); color: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(186, 255, 57, 0.4); }
+
+        /* Floating Buttons */
+        .floating-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .btn-whatsapp { width: 60px; height: 60px; background-color: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: 0.3s; text-decoration: none; position: relative; }
+        .btn-whatsapp:hover { transform: scale(1.1); color: white; }
+        .btn-whatsapp::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #25D366; animation: pulse-ring 2s infinite; z-index: -1; }
+        @keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+        .btn-scroll-top { width: 50px; height: 50px; background-color: var(--brand-dark); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px); align-self: center; }
+        .btn-scroll-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .btn-scroll-top:hover { background-color: var(--brand-lime); color: var(--brand-dark); transform: translateY(-5px); }
+
+        /* =========================================
+           2. SERVICE PAGE STYLES
+           ========================================= */
+        .section-padding { padding: 5rem 0; }
+        .section-label { color: var(--brand-dark); font-weight: 700; letter-spacing: 1px; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.8rem; display: inline-block; background: var(--brand-lime); padding: 4px 12px; border-radius: 4px; }
+
+        /* Hero */
+        .service-hero { padding: 6rem 0 4rem; text-align: center; background: radial-gradient(circle at top, rgba(133, 219, 250, 0.15) 0%, transparent 60%); }
+        .hero-title { font-weight: 800; font-size: 3.5rem; letter-spacing: -1px; margin-bottom: 1rem; }
+        .hero-desc { font-size: 1.2rem; color: #64748B; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* Detailed Service Card */
+        .service-detail-card {
+            background: white; border-radius: 24px; padding: 2.5rem;
+            border: 1px solid #eee; transition: 0.4s; height: 100%;
+            display: flex; flex-direction: column;
+        }
+        .service-detail-card:hover { transform: translateY(-5px); box-shadow: var(--card-hover); border-color: var(--brand-lime); }
+        .service-icon-lg {
+            width: 70px; height: 70px; border-radius: 20px; background: #F8FAFC;
+            color: var(--brand-dark); display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; margin-bottom: 1.5rem; transition: 0.3s;
+        }
+        .service-detail-card:hover .service-icon-lg { background: var(--brand-lime); }
+        
+        .service-features-list { list-style: none; padding: 0; margin-top: 1.5rem; margin-bottom: 2rem; }
+        .service-features-list li { display: flex; align-items: start; gap: 10px; margin-bottom: 12px; color: #555; font-size: 0.95rem; }
+        .service-features-list li i { color: var(--brand-blue); flex-shrink: 0; margin-top: 3px; }
+
+        /* Pricing Table */
+        .pricing-card {
+            background: white; border-radius: 24px; padding: 3rem 2rem;
+            text-align: center; border: 1px solid #eee; transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .pricing-card.popular {
+            border: 2px solid var(--brand-lime);
+            box-shadow: 0 20px 50px rgba(186, 255, 57, 0.15);
+            transform: scale(1.05); z-index: 2;
+        }
+        .pricing-card.popular::before {
+            content: 'MOST POPULAR'; position: absolute; top: 15px; right: -30px;
+            background: var(--brand-lime); color: var(--brand-dark); font-weight: 800; font-size: 0.7rem;
+            padding: 5px 30px; transform: rotate(45deg);
+        }
+        .price-tag { font-size: 3rem; font-weight: 800; color: var(--brand-dark); display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .price-period { font-size: 1rem; color: #999; font-weight: 500; }
+        
+        /* Footer CTA */
+        .cta-section-new { background: radial-gradient(circle at top right, #1E293B, #0F172A); padding: 6rem 0; position: relative; overflow: hidden; color: white; margin-top: 4rem; }
+        .btn-footer-lime { background-color: var(--brand-lime); color: var(--brand-dark); font-weight: 700; padding: 14px 40px; border-radius: 50px; border: none; transition: 0.3s; }
+        .btn-footer-lime:hover { box-shadow: 0 0 20px rgba(186, 255, 57, 0.6); transform: scale(1.05); }
+        footer { padding-top: 4rem; background: #fff; }
+
+        @media (max-width: 991px) {
+            .pricing-card.popular { transform: scale(1); margin: 20px 0; }
+            .floating-container { bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div style="width:32px; height:32px; background:var(--brand-dark); border-radius:8px; display:flex; align-items:center; justify-content:center; color:white;">
+                    <i class="bi bi-wallet2" style="font-size: 16px;"></i>
+                </div>
+                UIXSHUVO
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active text-dark" href="service.html">Layanan</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="https://wa.me/62895639068080" target="_blank" class="btn-navbar-cta">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="floating-container">
+        <div class="btn-scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+            <i class="bi bi-arrow-up"></i>
+        </div>
+        <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20tertarik%20dengan%20layanan%20Anda." class="btn-whatsapp" target="_blank" aria-label="Chat WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+
+    <section class="service-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="section-label">Our Solutions</span>
+            <h1 class="hero-title">Banking features<br>built for growth.</h1>
+            <p class="hero-desc">Whether you are an individual or a business, we have the right tools to help you manage and grow your wealth.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-detail-card">
+                        <div class="service-icon-lg"><i class="bi bi-person-circle"></i></div>
+                        <h3 class="fw-bold">Personal Banking</h3>
+                        <p class="text-muted">Experience seamless banking with no monthly fees and smart budgeting tools.</p>
+                        <ul class="service-features-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Free Checking Account</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Virtual Debit Card</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Early Payday (2 Days)</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-dark rounded-pill mt-auto w-100 fw-bold">Open Account</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-detail-card">
+                        <div class="service-icon-lg"><i class="bi bi-briefcase-fill"></i></div>
+                        <h3 class="fw-bold">Business Solutions</h3>
+                        <p class="text-muted">Scalable financial tools for startups and enterprises to manage cash flow.</p>
+                        <ul class="service-features-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Multi-user Access</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Payroll Integration</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Expense Tracking</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-dark rounded-pill mt-auto w-100 fw-bold">Contact Sales</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-detail-card">
+                        <div class="service-icon-lg"><i class="bi bi-graph-up-arrow"></i></div>
+                        <h3 class="fw-bold">Wealth & Invest</h3>
+                        <p class="text-muted">Grow your money with our automated investing portfolios and crypto trading.</p>
+                        <ul class="service-features-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Automated Investing</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Crypto Exchange</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Retirement Planning</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-dark rounded-pill mt-auto w-100 fw-bold">Start Investing</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-detail-card">
+                        <div class="service-icon-lg"><i class="bi bi-credit-card-2-back"></i></div>
+                        <h3 class="fw-bold">Credit Building</h3>
+                        <p class="text-muted">The safest way to build your credit score without the risk of debt.</p>
+                        <ul class="service-features-list">
+                            <li><i class="bi bi-check-circle-fill"></i> No Hard Credit Check</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 0% APR</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Instant Reporting</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-dark rounded-pill mt-auto w-100 fw-bold">Get Card</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-detail-card">
+                        <div class="service-icon-lg"><i class="bi bi-people-fill"></i></div>
+                        <h3 class="fw-bold">Group Finance</h3>
+                        <p class="text-muted">Split bills, share expenses, and manage group funds effortlessly.</p>
+                        <ul class="service-features-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Instant Bill Splitting</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Shared Vaults</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Payment Reminders</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-dark rounded-pill mt-auto w-100 fw-bold">Create Group</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-detail-card" style="background: #F8FAFC;">
+                        <div class="service-icon-lg"><i class="bi bi-globe"></i></div>
+                        <h3 class="fw-bold">International</h3>
+                        <p class="text-muted">Send money abroad with the best exchange rates and low fees.</p>
+                        <ul class="service-features-list">
+                            <li><i class="bi bi-check-circle-fill"></i> 50+ Currencies</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Real-time Rates</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Instant Transfer</li>
+                        </ul>
+                        <a href="#" class="btn btn-dark rounded-pill mt-auto w-100 fw-bold">Send Money</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-white">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-label">Pricing Plans</span>
+                <h2 class="display-6 fw-bold">Choose the right plan</h2>
+            </div>
+
+            <div class="row g-4 align-items-center justify-content-center">
+                <div class="col-md-4" data-aos="fade-right">
+                    <div class="pricing-card">
+                        <h4 class="fw-bold text-muted">Basic</h4>
+                        <div class="price-tag my-3">$0 <span class="price-period">/mo</span></div>
+                        <p class="text-muted mb-4">Perfect for getting started.</p>
+                        <ul class="list-unstyled mb-4 text-start mx-auto" style="max-width: 200px;">
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> Free Account</li>
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> Virtual Card</li>
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> Basic Support</li>
+                        </ul>
+                        <button class="btn btn-outline-dark rounded-pill w-100 fw-bold py-2">Get Started</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="pricing-card popular">
+                        <h4 class="fw-bold text-dark">Premium</h4>
+                        <div class="price-tag my-3">$12 <span class="price-period">/mo</span></div>
+                        <p class="text-muted mb-4">Best for power users.</p>
+                        <ul class="list-unstyled mb-4 text-start mx-auto" style="max-width: 200px;">
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> Metal Card</li>
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> 2% Cashback</li>
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> Priority Support</li>
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> No FX Fees</li>
+                        </ul>
+                        <button class="btn btn-dark rounded-pill w-100 fw-bold py-3" style="background: var(--brand-lime); color: var(--brand-dark); border:none;">Upgrade Now</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-left">
+                    <div class="pricing-card">
+                        <h4 class="fw-bold text-muted">Business</h4>
+                        <div class="price-tag my-3">$49 <span class="price-period">/mo</span></div>
+                        <p class="text-muted mb-4">For teams and startups.</p>
+                        <ul class="list-unstyled mb-4 text-start mx-auto" style="max-width: 200px;">
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> 10 Team Members</li>
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> Expense Management</li>
+                            <li class="mb-2"><i class="bi bi-check-lg text-success me-2"></i> Invoicing Tool</li>
+                        </ul>
+                        <button class="btn btn-outline-dark rounded-pill w-100 fw-bold py-2">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section-new text-center">
+        <div class="cta-pattern"></div>
+        <div class="container position-relative z-2" data-aos="zoom-in">
+            <h2 class="fw-bold display-5 mb-3">Ready to transform your finance?</h2>
+            <p class="text-white-50 mb-4 fs-5">Join millions of users who trust UIXSHUVO.</p>
+            <button class="btn-footer-lime shadow">Open Free Account</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">UIXSHUVO</h5>
+                    <p class="text-muted small w-75">The financial platform that helps you manage money, build credit, and split expenses effortlessly.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Get the App</h6>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">App Store</button>
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">Google Play</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 pb-4 text-center text-muted small">
+                &copy; 2026 UIXSHUVO Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 100, duration: 800 });
+
+        // Scroll to Top Logic
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        };
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Upcoming Events - UIXSHUVO Finance</title>
+    <meta name="description" content="Join UIXSHUVO's financial workshops, webinars, and conferences. Learn investing, budgeting, and crypto from industry experts.">
+    <meta name="keywords" content="finance webinar, investing workshop, crypto conference, financial literacy events, uixshuvo events">
+    <meta name="author" content="UIXSHUVO Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/event.html">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="theme-color" content="#BAFF39">
+
+    <style>
+        /* =========================================
+           1. CORE STYLES (KONSISTEN)
+           ========================================= */
+        :root {
+            --brand-blue: #85DBFA;
+            --brand-lime: #BAFF39;
+            --brand-dark: #0F172A;
+            --brand-text: #334155;
+            --brand-bg: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --card-hover: 0 20px 40px -5px rgba(186, 255, 57, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-bg);
+            color: var(--brand-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar { padding: 1rem 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.03); position: sticky; top: 0; z-index: 1000; }
+        .navbar-brand { font-weight: 800; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .nav-link { font-weight: 600; color: #64748B !important; margin: 0 12px; transition: 0.3s; font-size: 0.95rem; }
+        .nav-link:hover, .nav-link.active { color: var(--brand-dark) !important; }
+        .btn-navbar-cta { background-color: var(--brand-dark); color: #fff; font-weight: 700; border-radius: 50px; padding: 10px 30px; border: none; transition: 0.3s; text-decoration: none; }
+        .btn-navbar-cta:hover { background-color: var(--brand-lime); color: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(186, 255, 57, 0.4); }
+
+        /* Floating Buttons */
+        .floating-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .btn-whatsapp { width: 60px; height: 60px; background-color: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: 0.3s; text-decoration: none; position: relative; }
+        .btn-whatsapp:hover { transform: scale(1.1); color: white; }
+        .btn-whatsapp::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #25D366; animation: pulse-ring 2s infinite; z-index: -1; }
+        @keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+        .btn-scroll-top { width: 50px; height: 50px; background-color: var(--brand-dark); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px); align-self: center; }
+        .btn-scroll-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .btn-scroll-top:hover { background-color: var(--brand-lime); color: var(--brand-dark); transform: translateY(-5px); }
+
+        /* =========================================
+           2. EVENT PAGE STYLES
+           ========================================= */
+        .section-padding { padding: 5rem 0; }
+        .section-label { color: var(--brand-dark); font-weight: 700; letter-spacing: 1px; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.8rem; display: inline-block; background: var(--brand-lime); padding: 4px 12px; border-radius: 4px; }
+
+        /* Hero */
+        .event-hero { padding: 6rem 0 4rem; text-align: center; background: radial-gradient(circle at bottom right, rgba(186, 255, 57, 0.15) 0%, transparent 60%); }
+        .hero-title { font-weight: 800; font-size: 3.5rem; letter-spacing: -1px; margin-bottom: 1rem; }
+        .hero-desc { font-size: 1.2rem; color: #64748B; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* Search Bar */
+        .search-container { max-width: 600px; margin: -30px auto 3rem; background: white; padding: 10px; border-radius: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); display: flex; align-items: center; border: 1px solid #eee; position: relative; z-index: 10; }
+        .search-input { border: none; padding: 10px 20px; width: 100%; outline: none; border-radius: 50px; }
+        .btn-search { background: var(--brand-dark); color: white; border-radius: 50px; padding: 10px 30px; font-weight: 600; border: none; transition: 0.3s; }
+        .btn-search:hover { background: var(--brand-lime); color: var(--brand-dark); }
+
+        /* Featured Event Card */
+        .featured-event { background: var(--brand-dark); color: white; border-radius: 30px; padding: 0; overflow: hidden; position: relative; }
+        .featured-content { padding: 3rem; position: relative; z-index: 2; }
+        .featured-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; position: absolute; top: 0; right: 0; }
+        .featured-badge { background: var(--brand-lime); color: var(--brand-dark); padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; display: inline-block; margin-bottom: 1rem; }
+
+        /* Event Grid Card */
+        .event-card-lg { background: white; border-radius: 24px; border: 1px solid #eee; overflow: hidden; transition: 0.3s; height: 100%; display: flex; flex-direction: column; }
+        .event-card-lg:hover { transform: translateY(-5px); box-shadow: var(--card-hover); border-color: var(--brand-lime); }
+        .event-thumb { height: 200px; width: 100%; object-fit: cover; position: relative; }
+        .event-date-float { position: absolute; top: 15px; left: 15px; background: var(--brand-lime); color: var(--brand-dark); padding: 8px 15px; border-radius: 12px; text-align: center; font-weight: 700; line-height: 1.2; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .event-details { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .event-meta { font-size: 0.85rem; color: #64748B; margin-bottom: 0.5rem; display: flex; gap: 15px; }
+        .btn-event-link { margin-top: auto; color: var(--brand-dark); font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: 0.2s; }
+        .btn-event-link:hover { gap: 10px; color: #0ea5e9; }
+
+        /* Newsletter */
+        .newsletter-box { background: #F0Fdf4; border: 1px solid var(--brand-lime); border-radius: 24px; padding: 3rem; text-align: center; }
+
+        /* Footer CTA (Standard Index Style) */
+        .cta-section-new { background: radial-gradient(circle at top right, #1E293B, #0F172A); padding: 6rem 0; position: relative; overflow: hidden; color: white; margin-top: 4rem; }
+        .cta-pattern { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4; }
+        .btn-footer-lime { background-color: var(--brand-lime); color: var(--brand-dark); font-weight: 700; padding: 14px 40px; border-radius: 50px; border: none; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .btn-footer-lime:hover { box-shadow: 0 0 20px rgba(186, 255, 57, 0.6); transform: scale(1.05); }
+        footer { padding-top: 4rem; background: #fff; }
+
+        @media (max-width: 768px) {
+            .featured-img { position: relative; height: 250px; opacity: 1; }
+            .search-container { flex-direction: column; padding: 15px; gap: 10px; border-radius: 20px; }
+            .search-input { text-align: center; }
+            .btn-search { width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div style="width:32px; height:32px; background:var(--brand-dark); border-radius:8px; display:flex; align-items:center; justify-content:center; color:white;">
+                    <i class="bi bi-wallet2" style="font-size: 16px;"></i>
+                </div>
+                UIXSHUVO
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link active text-dark" href="event.html">Events</a></li> <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="https://wa.me/62895639068080" target="_blank" class="btn-navbar-cta">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="floating-container">
+        <div class="btn-scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+            <i class="bi bi-arrow-up"></i>
+        </div>
+        <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20bertanya%20tentang%20event." class="btn-whatsapp" target="_blank" aria-label="Chat WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+
+    <section class="event-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="section-label">Knowledge Hub</span>
+            <h1 class="hero-title">Events & Workshops</h1>
+            <p class="hero-desc">Level up your financial game. Join our community events led by industry experts and thought leaders.</p>
+        </div>
+    </section>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="search-container">
+            <i class="bi bi-search ms-3 text-muted"></i>
+            <input type="text" class="search-input" placeholder="Search events by topic (e.g. Crypto, Tax)...">
+            <button class="btn-search">Search</button>
+        </div>
+    </div>
+
+    <section class="section-padding pt-0">
+        <div class="container">
+            <div class="featured-event shadow-lg" data-aos="zoom-in">
+                <div class="row g-0 align-items-center">
+                    <div class="col-lg-6 order-2 order-lg-1">
+                        <div class="featured-content">
+                            <span class="featured-badge">FEATURED EVENT</span>
+                            <h2 class="display-5 fw-bold mb-3">Global Fintech Summit 2026</h2>
+                            <p class="mb-4 text-white-50">Join over 5,000 attendees for the biggest financial technology conference of the year. Keynotes from world leaders.</p>
+                            <div class="d-flex gap-4 mb-4 text-white-50">
+                                <span><i class="bi bi-calendar-event me-2"></i> Jan 20-22, 2026</span>
+                                <span><i class="bi bi-geo-alt me-2"></i> Jakarta & Online</span>
+                            </div>
+                            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20beli%20tiket%20Global%20Fintech%20Summit" class="btn btn-light rounded-pill px-4 fw-bold" target="_blank">Get Tickets</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2 position-relative h-100" style="min-height: 300px;">
+                        <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Summit" class="featured-img" style="opacity: 0.8; height: 100%;">
+                        <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to right, #0F172A, transparent);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <h3 class="fw-bold">Upcoming Sessions</h3>
+                <div class="dropdown">
+                    <button class="btn btn-outline-dark dropdown-toggle rounded-pill px-3" type="button" data-bs-toggle="dropdown">
+                        Filter By
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">All</a></li>
+                        <li><a class="dropdown-item" href="#">Webinars</a></li>
+                        <li><a class="dropdown-item" href="#">Workshops</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="event-card-lg">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="event-thumb">
+                            <div class="event-date-float">
+                                <span class="d-block small text-uppercase opacity-75">OCT</span>
+                                <span class="fs-4">24</span>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <span class="badge bg-light text-dark border mb-2 w-auto align-self-start">Webinar</span>
+                            <h4 class="fw-bold mb-2">Investing 101 for Beginners</h4>
+                            <div class="event-meta">
+                                <span><i class="bi bi-clock"></i> 10:00 AM</span>
+                                <span><i class="bi bi-camera-video"></i> Zoom</span>
+                            </div>
+                            <p class="text-muted small mt-2">Learn how to build your first stock portfolio with safe strategies.</p>
+                            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20daftar%20webinar%20Investing%20101" class="btn-event-link" target="_blank">Register Free <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="event-card-lg">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1639815188546-c43c240ff4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="event-thumb">
+                            <div class="event-date-float">
+                                <span class="d-block small text-uppercase opacity-75">NOV</span>
+                                <span class="fs-4">02</span>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <span class="badge bg-light text-dark border mb-2 w-auto align-self-start">Workshop</span>
+                            <h4 class="fw-bold mb-2">Future of Digital Currency</h4>
+                            <div class="event-meta">
+                                <span><i class="bi bi-clock"></i> 02:00 PM</span>
+                                <span><i class="bi bi-geo-alt"></i> Jakarta</span>
+                            </div>
+                            <p class="text-muted small mt-2">A deep dive into blockchain technology and crypto safety.</p>
+                            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20beli%20tiket%20workshop%20Crypto" class="btn-event-link" target="_blank">Get Tickets <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="event-card-lg">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="event-thumb">
+                            <div class="event-date-float">
+                                <span class="d-block small text-uppercase opacity-75">NOV</span>
+                                <span class="fs-4">15</span>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <span class="badge bg-light text-dark border mb-2 w-auto align-self-start">Masterclass</span>
+                            <h4 class="fw-bold mb-2">Smart Tax Savings</h4>
+                            <div class="event-meta">
+                                <span><i class="bi bi-clock"></i> 09:00 AM</span>
+                                <span><i class="bi bi-camera-video"></i> Google Meet</span>
+                            </div>
+                            <p class="text-muted small mt-2">Legal ways to optimize your tax returns for freelancers.</p>
+                            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20daftar%20masterclass%20Tax%20Savings" class="btn-event-link" target="_blank">Register Free <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="event-card-lg">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="event-thumb">
+                            <div class="event-date-float">
+                                <span class="d-block small text-uppercase opacity-75">DEC</span>
+                                <span class="fs-4">05</span>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <span class="badge bg-light text-dark border mb-2 w-auto align-self-start">Seminar</span>
+                            <h4 class="fw-bold mb-2">Real Estate Investment</h4>
+                            <div class="event-meta">
+                                <span><i class="bi bi-clock"></i> 01:00 PM</span>
+                                <span><i class="bi bi-geo-alt"></i> Surabaya</span>
+                            </div>
+                            <p class="text-muted small mt-2">Is it the right time to buy property? Experts discuss.</p>
+                            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20daftar%20waitlist%20Real%20Estate%20Seminar" class="btn-event-link" target="_blank">Join Waitlist <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="event-card-lg">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1526304640152-d4619684e484?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="event-thumb">
+                            <div class="event-date-float">
+                                <span class="d-block small text-uppercase opacity-75">DEC</span>
+                                <span class="fs-4">12</span>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <span class="badge bg-light text-dark border mb-2 w-auto align-self-start">Webinar</span>
+                            <h4 class="fw-bold mb-2">Retirement Planning</h4>
+                            <div class="event-meta">
+                                <span><i class="bi bi-clock"></i> 07:00 PM</span>
+                                <span><i class="bi bi-camera-video"></i> Zoom</span>
+                            </div>
+                            <p class="text-muted small mt-2">Start planning early. Compound interest explained.</p>
+                            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20daftar%20webinar%20Retirement%20Planning" class="btn-event-link" target="_blank">Register Free <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="event-card-lg">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1559136555-930d72f1d300?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="event-thumb">
+                            <div class="event-date-float">
+                                <span class="d-block small text-uppercase opacity-75">JAN</span>
+                                <span class="fs-4">10</span>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <span class="badge bg-light text-dark border mb-2 w-auto align-self-start">Panel</span>
+                            <h4 class="fw-bold mb-2">Startup Funding 2026</h4>
+                            <div class="event-meta">
+                                <span><i class="bi bi-clock"></i> 10:00 AM</span>
+                                <span><i class="bi bi-geo-alt"></i> Bali</span>
+                            </div>
+                            <p class="text-muted small mt-2">How to pitch to VCs in the current economic climate.</p>
+                            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20ingin%20beli%20tiket%20Startup%20Funding%20Event" class="btn-event-link" target="_blank">Get Tickets <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="cta-section-new text-center">
+        <div class="cta-pattern"></div>
+        <div class="container position-relative z-2" data-aos="zoom-in">
+            <h2 class="fw-bold display-5 mb-3">Ready to start?</h2>
+            <p class="text-white-50 mb-4 fs-5">Join 2 million users mastering their money today.</p>
+            <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20tertarik%20download%20aplikasi" class="btn-footer-lime shadow" target="_blank">Download App</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">UIXSHUVO</h5>
+                    <p class="text-muted small w-75">The financial platform that helps you manage money, build credit, and split expenses effortlessly.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Terms</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Get the App</h6>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">App Store</button>
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">Google Play</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 pb-4 text-center text-muted small">
+                &copy; 2026 UIXSHUVO Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 100, duration: 800 });
+
+        // Scroll to Top Logic
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        };
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>

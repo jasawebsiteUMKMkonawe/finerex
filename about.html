@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>About Us - UIXSHUVO | Empowering Financial Freedom</title>
+    <meta name="description" content="Learn about UIXSHUVO's mission to redefine financial freedom. Meet our team, explore our values, and see how we are building the next generation banking OS.">
+    <meta name="keywords" content="about uixshuvo, fintech team, financial freedom, digital banking mission, uixshuvo founders, fintech values">
+    <meta name="author" content="UIXSHUVO Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/about.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/about.html">
+    <meta property="og:title" content="About UIXSHUVO - Empowering Financial Freedom">
+    <meta property="og:description" content="We are building the financial operating system for the next generation. Simple, transparent, and built for you.">
+    <meta property="og:image" content="https://yourwebsite.com/assets/og-about.jpg">
+    <meta property="og:locale" content="id_ID">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@uixshuvo">
+    <meta name="twitter:title" content="About UIXSHUVO - Empowering Financial Freedom">
+    <meta name="twitter:description" content="Meet the team redefining how you interact with money. Innovation, Security, and Customer Obsession.">
+    <meta name="twitter:image" content="https://yourwebsite.com/assets/twitter-about.jpg">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#BAFF39">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "UIXSHUVO",
+        "url": "https://yourwebsite.com",
+        "logo": "https://yourwebsite.com/logo.png",
+        "foundingDate": "2020",
+        "founders": [
+          {
+            "@type": "Person",
+            "name": "Arefin Shuvo"
+          }
+        ],
+        "description": "UIXSHUVO is a financial technology company building a smart banking platform to empower financial freedom.",
+        "sameAs": [
+          "https://www.facebook.com/uixshuvo",
+          "https://twitter.com/uixshuvo",
+          "https://www.linkedin.com/company/uixshuvo"
+        ]
+      }
+    }
+    </script>
+
+    <style>
+        /* =========================================
+           1. SHARED STYLES (SAMA DENGAN INDEX)
+           ========================================= */
+        :root {
+            --brand-blue: #85DBFA;
+            --brand-lime: #BAFF39; /* Lime Punch */
+            --brand-dark: #0F172A;
+            --brand-text: #334155;
+            --brand-bg: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --card-hover: 0 20px 40px -5px rgba(186, 255, 57, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-bg);
+            color: var(--brand-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navbar (Sticky) */
+        .navbar { 
+            padding: 1rem 0; 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .navbar-brand { font-weight: 800; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .nav-link { font-weight: 600; color: #64748B !important; margin: 0 12px; transition: 0.3s; font-size: 0.95rem; }
+        .nav-link:hover { color: var(--brand-dark) !important; }
+        .btn-navbar-cta { background-color: var(--brand-dark); color: #fff; font-weight: 700; border-radius: 50px; padding: 10px 30px; border: none; transition: 0.3s; text-decoration: none; }
+        .btn-navbar-cta:hover { background-color: var(--brand-lime); color: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(186, 255, 57, 0.4); }
+
+        footer { padding-top: 4rem; background: #fff; }
+
+        /* =========================================
+           2. ABOUT PAGE SPECIFIC STYLES
+           ========================================= */
+        
+        /* Hero About - JARAK DIKURANGI DISINI */
+        .about-hero {
+            padding: 4rem 0 3rem; /* Dikurangi dari 6rem menjadi 4rem */
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(186, 255, 57, 0.1) 0%, transparent 60%);
+        }
+        .about-title { font-weight: 800; font-size: 3.5rem; letter-spacing: -1px; margin-bottom: 1rem; }
+        .about-subtitle { font-size: 1.2rem; color: #64748B; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* Story Section */
+        .story-img-container {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+        .story-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .story-img-container:hover .story-img { transform: scale(1.03); }
+        
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            box-shadow: var(--card-shadow);
+            transition: 0.3s;
+        }
+        .stat-box:hover { transform: translateY(-5px); border-color: var(--brand-lime); }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--brand-dark); margin-bottom: 0.5rem; }
+        .stat-label { color: #64748B; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Team Cards */
+        .team-card {
+            border: none;
+            background: transparent;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .team-img-wrapper {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid transparent;
+            transition: 0.3s;
+            position: relative;
+        }
+        .team-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-card:hover .team-img-wrapper {
+            border-color: var(--brand-lime);
+            box-shadow: 0 10px 30px rgba(186, 255, 57, 0.3);
+            transform: scale(1.05);
+        }
+        .team-role {
+            color: var(--brand-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .team-socials a {
+            color: #94a3b8;
+            margin: 0 8px;
+            font-size: 1.1rem;
+            transition: 0.2s;
+        }
+        .team-socials a:hover { color: var(--brand-dark); }
+
+        /* Values Section */
+        .value-card {
+            background: #F8FAFC;
+            padding: 2.5rem;
+            border-radius: 24px;
+            height: 100%;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .value-card:hover {
+            background: white;
+            box-shadow: var(--card-shadow);
+            border-color: var(--brand-lime);
+            transform: translateY(-5px);
+        }
+        .value-icon {
+            width: 60px; height: 60px;
+            background: white;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .value-card:hover .value-icon {
+            background: var(--brand-lime);
+        }
+
+        /* Footer CTA (Sama dengan Index) */
+        .cta-section-new {
+            background: radial-gradient(circle at top right, #1E293B, #0F172A);
+            padding: 6rem 0; position: relative; overflow: hidden; color: white; margin-top: 4rem;
+        }
+        .btn-footer-lime {
+            background-color: var(--brand-lime); color: var(--brand-dark);
+            font-weight: 700; padding: 14px 40px; border-radius: 50px; border: none; transition: 0.3s;
+        }
+        .btn-footer-lime:hover { box-shadow: 0 0 20px rgba(186, 255, 57, 0.6); transform: scale(1.05); }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" aria-label="Back to Homepage">
+                <div style="width:32px; height:32px; background:var(--brand-dark); border-radius:8px; display:flex; align-items:center; justify-content:center; color:white;">
+                    <i class="bi bi-wallet2" style="font-size: 16px;"></i>
+                </div>
+                UIXSHUVO
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link text-dark" href="about.html">About</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="service.html">Service</a></li>
+                    <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="https://wa.me/62895639068080" target="_blank" class="btn-navbar-cta">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="about-hero">
+            <div class="container" data-aos="fade-up">
+                <span class="badge rounded-pill px-3 py-2 mb-3" style="background: rgba(186, 255, 57, 0.2); color: #4d7c0f; font-weight: 700;">OUR MISSION</span>
+                <h1 class="about-title">Empowering your<br>financial freedom.</h1>
+                <p class="about-subtitle">We are building the financial operating system for the next generation. Simple, transparent, and built for you.</p>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                        <h2 class="fw-bold display-6 mb-4">It started with a simple idea.</h2>
+                        <p class="text-muted fs-5 mb-4">
+                            Back in 2020, we realized that traditional banking was broken. Hidden fees, clunky interfaces, and zero transparency.
+                        </p>
+                        <p class="text-muted mb-4">
+                            UIXSHUVO was born out of frustration and hope. We wanted to create a platform where money management feels like magic, not a chore. Today, we are proud to serve millions of users worldwide.
+                        </p>
+                        <div class="d-flex gap-3 align-items-center">
+                            <img src="https://placehold.co/60/BAFF39/0F172A?text=CEO" class="rounded-circle" width="50" height="50" alt="Arefin Shuvo" loading="lazy">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Arefin Shuvo</h6>
+                                <small class="text-muted">Founder & CEO</small>
+                            </div>
+                            <img src="https://placehold.co/100x50/fff/333?text=Signature" class="ms-4" style="opacity: 0.5; height: 40px;" alt="Signature" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="story-img-container">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Our Team Meeting" class="story-img" width="600" height="400" loading="eager">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-white">
+            <div class="container">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-box">
+                            <div class="stat-number">2M+</div>
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-box">
+                            <div class="stat-number">99%</div>
+                            <div class="stat-label">Satisfaction</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-box">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Countries</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-box">
+                            <div class="stat-number">$5B+</div>
+                            <div class="stat-label">Transactions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5" style="background-color: var(--bg-soft);">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="text-uppercase fw-bold text-muted small letter-spacing-1">Our Values</span>
+                    <h2 class="fw-bold mt-2">What drives us forward</h2>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="value-card">
+                            <div class="value-icon"><i class="bi bi-lightbulb"></i></div>
+                            <h4 class="fw-bold h5">Innovation First</h4>
+                            <p class="text-muted small">We don't just follow trends; we set them. We are constantly pushing the boundaries of what fintech can do.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="value-card">
+                            <div class="value-icon"><i class="bi bi-shield-lock"></i></div>
+                            <h4 class="fw-bold h5">Uncompromised Security</h4>
+                            <p class="text-muted small">Your trust is our currency. We employ bank-grade security measures to keep your data safe.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="value-card">
+                            <div class="value-icon"><i class="bi bi-people"></i></div>
+                            <h4 class="fw-bold h5">Customer Obsessed</h4>
+                            <p class="text-muted small">We build for you. Every feature, every button, every pixel is designed with our users in mind.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-white">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="fw-bold">Meet the minds behind UIXSHUVO</h2>
+                </div>
+
+                <div class="row g-5 justify-content-center">
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="team-card">
+                            <div class="team-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Arefin Shuvo" class="team-img" width="200" height="200" loading="lazy">
+                            </div>
+                            <h5 class="fw-bold mb-1">Arefin Shuvo</h5>
+                            <div class="team-role">Founder & CEO</div>
+                            <div class="team-socials mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                        <div class="team-card">
+                            <div class="team-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Sarah Jenkins" class="team-img" width="200" height="200" loading="lazy">
+                            </div>
+                            <h5 class="fw-bold mb-1">Sarah Jenkins</h5>
+                            <div class="team-role">Head of Product</div>
+                            <div class="team-socials mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="team-card">
+                            <div class="team-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Michael Chen" class="team-img" width="200" height="200" loading="lazy">
+                            </div>
+                            <h5 class="fw-bold mb-1">Michael Chen</h5>
+                            <div class="team-role">CTO</div>
+                            <div class="team-socials mt-3">
+                                <a href="#" aria-label="Github"><i class="bi bi-github"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                        <div class="team-card">
+                            <div class="team-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Emily Ross" class="team-img" width="200" height="200" loading="lazy">
+                            </div>
+                            <h5 class="fw-bold mb-1">Emily Ross</h5>
+                            <div class="team-role">Marketing Lead</div>
+                            <div class="team-socials mt-3">
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section-new text-center">
+            <div style="position: absolute; top:0; left:0; width:100%; height:100%; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4;"></div>
+            <div class="container position-relative z-2" data-aos="zoom-in">
+                <h2 class="fw-bold display-5 mb-3">Join the team?</h2>
+                <p class="text-white-50 mb-4 fs-5">We are always looking for talented people. Check our open positions.</p>
+                <button class="btn-footer-lime shadow">View Careers</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">UIXSHUVO</h5>
+                    <p class="text-muted small w-75">The financial platform that helps you manage money, build credit, and split expenses effortlessly.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Get the App</h6>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">App Store</button>
+                        <button class="btn btn-outline-dark btn-sm rounded-3 py-2 px-3">Google Play</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 pb-4 text-center text-muted small">
+                &copy; 2026 UIXSHUVO Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({ once: true, offset: 100, duration: 800 });
+        });
+    </script>
+</body>
+
+</html>
